@@ -12,7 +12,7 @@ node {
         sh 'cat build.json'
         def bld = readJSON file: 'build.json'
         def idb = bld.services.deployments[0].status
-        echo 'hello world'
+        echo bld
 
        /* if (ids == idb) {
         def status = 'PRIMARY'

@@ -8,6 +8,15 @@ pipeline {
 
       }
     }
+    stage('Check status of task') {
+      steps {
+        sh 'aws ecs describe-services --services ecs-simple-service2 > build.json'
+        sh 'cat build.json'
+
+      }
+
+    }
+
    
     }
 }

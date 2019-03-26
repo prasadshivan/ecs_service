@@ -21,7 +21,7 @@ node {
         echo status
         sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'
-        status = chk.service.deployments[0].status
+        status = chk.service.deployments.status
         }
 
 

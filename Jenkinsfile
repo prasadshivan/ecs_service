@@ -4,8 +4,7 @@ node {
     
         /*sh 'aws ecs create-service --cluster DevopsTest --service-name ecs-simple-service2 --task-definition ExampleTask --desired-count 1'*/
         sh 'aws ecs update-service --cluster DevopsTest --service ecs-simple-service2 --task-definition ExampleTask --desired-count 1 > service.json'
-    }
-        stage ('status check'){
+    
         def srvc = readJSON file: 'service.json'
         def ids = srvc.service.deployments[0].id
         echo ids

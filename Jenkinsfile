@@ -11,8 +11,8 @@ node {
         sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > build.json'
         sh 'cat build.json'
         def bld = readJSON file: 'build.json'
-        def idm = String(bld.services.deployments[0].status);
-        echo "${idm}"
+        def idb = bld.services.deployments[0].id;
+        echo idb
 
        /* if (ids == idb) {
         def status = 'PRIMARY'

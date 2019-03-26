@@ -16,7 +16,7 @@ node {
 
         def status = 'PRIMARY'
 
-        while (status == 'ACTIVE') {
+        while (status == 'PRIMARY') {
         echo status
         sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'

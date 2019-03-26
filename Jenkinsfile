@@ -16,7 +16,7 @@ node {
         if (ids == idb) {
         def status = 'PRIMARY'
 
-        while status == 'PRIMARY' {
+        while (status == 'PRIMARY') {
         sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'
         status == chk.service.deployments[0].status

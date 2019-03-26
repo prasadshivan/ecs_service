@@ -28,7 +28,7 @@ node {
         }
         else {
           build failed
-        } */
+        } 
 
         }
 

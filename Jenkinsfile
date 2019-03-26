@@ -1,6 +1,5 @@
-pipeline {
-  agent any
-  stages {
+node {
+
     stage('create a new service') {
       steps {
         /*sh 'aws ecs create-service --cluster DevopsTest --service-name ecs-simple-service2 --task-definition ExampleTask --desired-count 1'*/
@@ -13,6 +12,6 @@ pipeline {
       }
     }
     
-  }
-}
+
+    }
 

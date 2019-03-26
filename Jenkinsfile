@@ -14,7 +14,6 @@ node {
         def idb = bld.services.deployments[0].id;
         echo "${idb}"
 
-       if (ids == idb) {
         def status = 'PRIMARY'
 
         while (status == 'PRIMARY') {
@@ -25,10 +24,7 @@ node {
         }
 
 
-        }
-        else {
-          build failed
-        } 
+ 
 
         }
 

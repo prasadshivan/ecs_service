@@ -14,7 +14,7 @@ node {
         def chk = readJSON file: 'check.json'
         def status = 'ACTIVE'
           echo status
-           chk.services.deployments[0].status = "${status};
+           chk.services.deployments[0].status = "${status}";
        }
     }
 }

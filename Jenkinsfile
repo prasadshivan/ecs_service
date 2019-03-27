@@ -6,9 +6,11 @@ node {
         sh 'aws ecs update-service --cluster DevopsTest --service ecs-simple-service2 --task-definition ExampleTask --desired-count 1'
 
   
-
+   def serviceCheckTries = 1 
+   def maxThreshold = 10
    timeout(5) {
     waitUntil {
+            serviceCheckTries = serviceCheckTries +1 ;
           sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'
         if (chk.services[0].deployments[0].status == 'PRIMARY' && chk.services[0].deployments[0].desiredCount == 1 && 
@@ -18,11 +20,12 @@ node {
        echo "Build is successful"
             return true
         }
-        else 
+        else if(serviceCheckTries >= maxThreshold)
         {
         error ("Task failed")
-            return false
+            
         }
+        return false
     }
 }
         

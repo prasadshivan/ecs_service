@@ -15,6 +15,7 @@ node {
         echo chk.toString()
         echo "********* end"
         echo "Statusvalue ::::::::: ${chk.services[0].deployments[0].status}"
+        return chk.services[0].deployments[0].status == 'ACTIVE'
        
     }
 }

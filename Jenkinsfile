@@ -12,8 +12,8 @@ node {
           sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'
         if (
-        return chk.services[0].deployments[0].desiredCount == 1
-        return chk.services[0].deployments[0].runningCount == 1
+        return chk.services[0].deployments[0].desiredCount == 1 &&
+        return chk.services[0].deployments[0].runningCount == 1 &&
         return chk.services[0].deployments[0].status == 'PRIMARY'
             )
         {

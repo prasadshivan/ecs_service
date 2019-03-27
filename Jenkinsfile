@@ -20,7 +20,8 @@ node {
        echo "Build is successful"
             return true
         }
-        else if(serviceCheckTries >= maxThreshold)
+        else if(serviceCheckTries >= maxThreshold || (chk.services[0].deployments[0].desiredCount == 0 && 
+           chk.services[0].deployments[0].runningCount == 0))
         {
             echo "Buidl Error ================="
         error ("Task failed")

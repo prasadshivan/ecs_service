@@ -11,22 +11,19 @@ node {
     waitUntil {
           sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'
-        echo "********* start"
-        echo chk.toString()
-        echo "********* end"
-        echo "Statusvalue ::::::::: ${chk.services[0].deployments[0].status}"
-        return chk.services[0].deployments[0].status == 'ACTIVE'
-       
+        if
+        return chk.services[0].deployments[0].desiredCount == 1
+        return chk.services[0].deployments[0].runningCount == 1
+        return chk.services[0].deployments[0].status == 'PRIMARY'
+        {
+       echo "Build is successful"
+        }
+        else 
+        {
+        echo "Build is failed"
+        }
     }
 }
         
     }
 }
-
-        
-  
-
-
-
-
-

@@ -14,7 +14,7 @@ node {
         echo "********* start"
         echo chk.toString()
         echo "********* end"
-        chk.services[0].deployments[0].status = 'ACTIVE'
+        echo chk.services[0].deployments[0].status
        
     }
 }

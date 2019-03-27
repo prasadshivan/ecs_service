@@ -20,7 +20,7 @@ node {
         }
         else 
         {
-        echo "Build is failed"
+        error ("Task failed")
             return false
         }
     }

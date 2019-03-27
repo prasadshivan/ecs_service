@@ -9,16 +9,14 @@ node {
 
    timeout(5) {
     waitUntil {
-       script {
           sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'
-        def status = 'ACTIVE'
-          echo status
-           chk.services.deployments[0].status = "${status}";
-       }
+        chk.services.deployments[0].status = 'ACTIVE'
+       
     }
 }
-}
+        
+    }
 }
 
         

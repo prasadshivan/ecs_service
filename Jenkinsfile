@@ -14,7 +14,7 @@ node {
         echo "********* start"
         echo chk.toString()
         echo "********* end"
-        echo chk.services[0].deployments[0].status
+        echo "Statusvalue ::::::::: ${chk.services[0].deployments[0].status}"
        
     }
 }

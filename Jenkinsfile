@@ -11,7 +11,7 @@ node {
     waitUntil {
           sh 'aws ecs describe-services --cluster DevopsTest --services ecs-simple-service2 > check.json'
         def chk = readJSON file: 'check.json'
-        if (return chk.services[0].deployments[0].status == 'PRIMARY' && return chk.services[0].deployments[0].desiredCount == 1 && return chk.services[0].deployments[0].runningCount == 1) 
+        if (chk.services[0].deployments[0].status == 'PRIMARY' && chk.services[0].deployments[0].desiredCount == 1 && chk.services[0].deployments[0].runningCount == 1) 
         
         {
        echo "Build is successful"
